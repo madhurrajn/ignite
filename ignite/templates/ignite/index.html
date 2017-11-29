@@ -1,0 +1,65 @@
+{% extends 'base1.html' %}
+{% block extrahead %}
+{% endblock %}
+{% load staticfiles %}
+
+{% block pageblock %}
+<div ng-app="ignite" ng-controller="FetchController">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card filter">
+                <div class="header">
+                    <h4 class="title">Database </h4>
+                </div>
+                <div class="content">
+                    <div class="container-fluid">
+                        <i class="pe-7s-map-marker"></i>
+                        <input id="origin-input" class="controls" type="text"
+                            placeholder="Upload File Location"></p>
+                        <div class="footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'dateformat.html' %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div id="chartContainer" ></div>
+                <div id="schedChartContainer" ></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div id="chartContainer" ></div>
+                <div id="schedChartContainer" ></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row"> 
+        <div class="col-md-12">
+            <div class="card">
+                <div class="content" >
+                    <image src="{% static 'assets/img/Ignite.png' %}" height="323"></image>
+                </div>
+                    <div class="footer">
+                        <div class="legend">
+                            <i class="fa fa-circle text-info"></i> Open
+                            <i class="fa fa-circle text-danger"></i> Click
+                            <i class="fa fa-circle text-warning"></i> Click Second Time
+                        </div>
+                        <hr>
+                        <div class="stats">
+                            <i class="fa fa-history"></i> Updated 3 minutes ago
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

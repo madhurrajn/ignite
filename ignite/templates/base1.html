@@ -1,0 +1,282 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.ico' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="google-signin-client_id" content="886891703048-ie88ccf5s79ke7at8ehpmk8lgtno0n1h.apps.googleusercontent.com"> 
+
+    <title>Ignite : Data Analytics</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-dropdown-multiselect/1.2.0/angularjs-dropdown-multiselect.min.js"></script>
+
+    <!-- Animation library for notifications   -->
+    <link href="{% static 'assets/css/animate.min.css' %}" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="{% static 'assets/css/light-bootstrap-dashboard.css' %}" rel="stylesheet"/>
+
+
+    <!--  CSS don't include it in your project     -->
+    <link href="{% static 'ignite.css' %}" rel="stylesheet" />
+
+
+    <!--     Fonts and icons     -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="{% static 'assets/css/pe-icon-7-stroke.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/css/font-awesome.min.css' %}" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="{% static 'assets/js/moment.js' %}" ></script>
+    <script src="{% static 'assets/js/underscorejs-min.js' %}" ></script>
+    <script>
+        google.charts.load('current', {'packages':['gauge']});
+    </script>
+        
+</head>
+<body>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41060534-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<div class="wrapper">
+    <div class="sidebar" data-color="azure" data-image="{% static 'assets/img/sidebar-6.jpg' %}">
+
+    <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="#" class="simple-text">
+                   IGNITE - Data Analyser
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                    <a href="index.html">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="user.html">
+                        <i class="pe-7s-user"></i>
+                        <p>Dynamic Classifications</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="table.html">
+                        <i class="pe-7s-note2"></i>
+                        <p>Static Classifications</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="maps.html">
+                        <i class="pe-7s-map-marker"></i>
+                        <p>Models</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="notifications.html">
+                        <i class="pe-7s-bell"></i>
+                        <p>Help</p>
+                    </a>
+                </li>
+                <li class="active-pro">
+                    <a href="upgrade.html">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Updates</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Dashboard</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-dashboard"></i>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-globe"></i>
+                                    <b class="caret"></b>
+                                    <span class="notification">0</span>
+                              </a>
+                        </li>
+                        <li>
+                           <a href="">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                           <a href="">
+                               <div id='my-signin2' onClick="gauthOnLoadCallback">Google SignIn</div>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Dropdown
+                                    <b class="caret"></b>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                              </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Log out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+
+            {% block pageblock %}{% endblock %}
+
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                               Blog
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy; 2017 Jnanena Vignanam
+                </p>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+
+</body>
+
+    <!--   Core JS Files   -->
+    <script src="https://apis.google.com/js/platform.js?onload=gauthOnLoadCallback" async defer></script>
+    <script src="{% static 'assets/js/jquery-1.10.2.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}" type="text/javascript"></script>
+
+    <!--  Checkbox, Radio & Switch Plugins -->
+    <script src="{% static 'assets/js/bootstrap-checkbox-radio-switch.js' %}"></script>
+
+    <!--  Charts Plugin -->
+
+    <!--  Notifications Plugin    -->
+    <script src="{% static 'assets/js/bootstrap-notify.js' %}"></script>
+
+    <!--  Google Maps Plugin    
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkwaMJdD1Kuz3nAdA5NdgKMbcwggKhfQo&libraries=places"></script>
+-->
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+    <script src="{% static 'assets/js/light-bootstrap-dashboard.js' %}"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+    <script src="{% static 'ignite.js' %}"></script>
+    <script type="text/javascript">
+    window.onSuccess = function(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    }
+    window.onFailure = function(error) {
+      console.log(error);
+    }
+
+    function gauthOnLoadCallback() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'longtitle': false,
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+
+            $.notify({
+                icon: 'pe-7s-gift',
+                message: "Welcome to <b>Ignite Data Analytics</b> - Efficiency Defined."
+
+            },{
+                type: 'info',
+                timer: 4000
+            });
+
+        });
+    </script>
+
+</html>

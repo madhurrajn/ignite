@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places" sync defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.js"></script>
+<script src="{% static 'index.js' %}"></script>
+<div id="map-canvas"></div>
+
+<div ng-app="testApp" ng-controller="MyController as myCtrl">    
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <ul class="nav navbar-nav">
+
+
+                <li ng-class="{ active:myCtrl.isSet('map') }">
+    {% csrf_token %}
+    <input id="origin-input" class="controls" type="text"
+        placeholder="Enter an origin location">
+
+    <input id="destination-input" class="controls" type="text"
+        placeholder="Enter a destination location">
+
+
+                    <a href ng-click="myCtrl.setTab('map')">Show Map</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <map-page ng-show="myCtrl.isSet('map')"></map-page>
+</div>
+</html>

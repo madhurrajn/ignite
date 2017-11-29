@@ -1,0 +1,31 @@
+    <div class="row"> 
+        <div class="col-md-12">
+            <div class="card">
+                <div class="row" >
+                    <div class="container-fluid">
+                        From: 
+                        <input type="text" ng-model="fromdate" value={{fromdate}}>
+                        <button type="button" class="btn btn-default" ><i class="glyphicon glyphicon-calendar"></i></button>
+                        To: 
+                        <input type="text" ng-model="todate" value={{todate}}>
+                        <button type="button" class="btn btn-default" ><i class="glyphicon glyphicon-calendar"></i></button>
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col-md-12">
+            <div class="card">
+                <div class="row" >
+                    <div class="container-fluid">
+                        <form ng-submit="analyse()">
+                        <div type="select" ng-dropdown-multiselect="" options="featureOptions" selected-model="featuremodel" extra-settings="featuresettings"></div>
+                             <input type="submit" id="submit" value="Analyse" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
