@@ -193,7 +193,7 @@
         $('#chartContainer').highcharts({
             chart: {
                 renderTo: 'schedChartContainer',
-                type: 'column',
+                type: 'line',
             },  
             title: {
                 text: 'Estimated Time'
